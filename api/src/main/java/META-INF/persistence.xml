@@ -10,5 +10,14 @@
 		<class>co.donalo_lo.api.entities.PerfilFundacion</class>
 		<class>co.donalo_lo.api.entities.RequerimientosFd</class>
 		<class>co.donalo_lo.api.entities.Usuario</class>
+		<class>model.Categoria</class>
+		<class>model.DetallesEntrega</class>
+		<class>model.NDonacion</class>
+		<class>model.Notificacion</class>
+		<class>model.PerfilArticulo</class>
+		<class>model.PerfilDonador</class>
+		<class>model.PerfilFundacion</class>
+		<class>model.RequerimientosFd</class>
+		<class>model.Usuario</class>
 	</persistence-unit>
 </persistence>
