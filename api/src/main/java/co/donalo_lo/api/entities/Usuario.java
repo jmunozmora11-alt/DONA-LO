@@ -1,44 +1,111 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.List;
 
+
+/**
+ * The persistent class for the usuario database table.
+ * 
+ */
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+public class Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Long idUsuario;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_usuario")
+	private Long idUsuario;
 
-    @Column(name = "email", length = 150, unique = true, nullable = false)
-    private String email;
+	@Column(name="email")
+	private String email;
+	
+	
 
-    @Column(name = "password", length = 255, nullable = false)
-    private String password;
+	@Column(name="fecha_creacion")
+	private Timestamp fechaCreacion;
+	
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="rol")
+	private String rol;
 
-    @Column(name = "rol", length = 50, nullable = false)
-    private String rol; 
+	//bi-directional many-to-one association to PerfilDonador
+	@OneToMany(mappedBy="usuario")
+	private List<PerfilDonador> perfilDonadors;
 
-    @Column(name = "fecha_creacion")
-    private LocalDateTime fechaCreacion;
+	public Usuario() {
+	}
 
-    public Usuario() {}
+	public Long getIdUsuario() {
+		return this.idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	
 
 
-    public Long getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(Long idUsuario) { this.idUsuario = idUsuario; }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+	public Timestamp getFechaCreacion() {
+		return this.fechaCreacion;
+	}
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+	public void setFechaCreacion(Timestamp fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
 
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
+	
 
-    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
-    public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
+	public List<PerfilDonador> getPerfilDonadors() {
+		return this.perfilDonadors;
+	}
+
+	public void setPerfilDonadors(List<PerfilDonador> perfilDonadors) {
+		this.perfilDonadors = perfilDonadors;
+	}
+
+	public PerfilDonador addPerfilDonador(PerfilDonador perfilDonador) {
+		getPerfilDonadors().add(perfilDonador);
+		perfilDonador.setUsuario(this);
+
+		return perfilDonador;
+	}
+
+	public PerfilDonador removePerfilDonador(PerfilDonador perfilDonador) {
+		getPerfilDonadors().remove(perfilDonador);
+		perfilDonador.setUsuario(null);
+
+		return perfilDonador;
+	}
+
 }

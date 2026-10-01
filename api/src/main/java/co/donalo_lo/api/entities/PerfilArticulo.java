@@ -1,93 +1,145 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
 
+
+/**
+ * The persistent class for the perfil_articulo database table.
+ * 
+ */
 @Entity
-@Table(name = "perfil_articulo")
-public class PerfilArticulo {
+@Table(name="perfil_articulo")
+@NamedQuery(name="PerfilArticulo.findAll", query="SELECT p FROM PerfilArticulo p")
+public class PerfilArticulo implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_articulo")
-    private Long idArticulo;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_articulo")
+	private Long idArticulo;
 
-    @Column(name = "id_user")
-    private Long idUser;
+	private String color;
 
-    @Column(name = "id_categoria")
-    private Long idCategoria;
+	private String descripcion;
 
-    @Column(name = "titulo", length = 100)
-    private String titulo;
+	private String dimension;
 
-    @Column(name = "descripcion", columnDefinition = "TEXT")
-    private String descripcion;
+	private Boolean disponibilidad;
 
-    @Column(name = "estado", length = 30)
-    private String estado;
+	private String estado;
 
-    @Column(name = "imagen")
-    private String imagen;
+	@Column(name="id_categoria")
+	private Long idCategoria;
 
-    @Column(name = "talla", length = 20)
-    private String talla;
+	@Column(name="id_user")
+	private Long idUser;
 
-    @Column(name = "material", length = 50)
-    private String material;
+	private String imagen;
 
-    @Column(name = "color", length = 30)
-    private String color;
+	private String material;
 
-    @Column(name = "dimension", length = 50)
-    private String dimension;
+	private String talla;
 
-    @Column(name = "disponibilidad")
-    private Boolean disponibilidad;
+	private String titulo;
 
-    public PerfilArticulo() {}
-
-    public Long getIdArticulo() { return idArticulo; }
-    public void setIdArticulo(Long idArticulo) { this.idArticulo = idArticulo; }
-
-    public Long getIdUser() { return idUser; }
-    public void setIdUser(Long idUser) { this.idUser = idUser; }
-
-    public Long getIdCategoria() { return idCategoria; }
-    public void setIdCategoria(Long idCategoria) { this.idCategoria = idCategoria; }
-
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
-
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
-
-    public String getImagen() { return imagen; }
-    public void setImagen(String imagen) { this.imagen = imagen; }
-
-    public String getTalla() { return talla; }
-    public void setTalla(String talla) { this.talla = talla; }
-
-    public String getMaterial() { return material; }
-    public void setMaterial(String material) { this.material = material; }
-
-    public String getColor() { return color; }
-    public void setColor(String color) { this.color = color; }
-
-    public String getDimension() { return dimension; }
-    public void setDimension(String dimension) { this.dimension = dimension; }
-
-    public Boolean getDisponibilidad() { return disponibilidad; }
-    public void setDisponibilidad(Boolean disponibilidad) { this.disponibilidad = disponibilidad; }
-
-	public Object getNombre() {
-		
-		return null;
+	public PerfilArticulo() {
 	}
 
-	public void setNombre(Object nombre) {
-		
+	public Long getIdArticulo() {
+		return this.idArticulo;
 	}
+
+	public void setIdArticulo(Long idArticulo) {
+		this.idArticulo = idArticulo;
+	}
+
+	public String getColor() {
+		return this.color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getDimension() {
+		return this.dimension;
+	}
+
+	public void setDimension(String dimension) {
+		this.dimension = dimension;
+	}
+
+	public Boolean getDisponibilidad() {
+		return this.disponibilidad;
+	}
+
+	public void setDisponibilidad(Boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+	public String getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Long getIdCategoria() {
+		return this.idCategoria;
+	}
+
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+	public Long getIdUser() {
+		return this.idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getImagen() {
+		return this.imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getMaterial() {
+		return this.material;
+	}
+
+	public void setMaterial(String material) {
+		this.material = material;
+	}
+
+	public String getTalla() {
+		return this.talla;
+	}
+
+	public void setTalla(String talla) {
+		this.talla = talla;
+	}
+
+	public String getTitulo() {
+		return this.titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 }

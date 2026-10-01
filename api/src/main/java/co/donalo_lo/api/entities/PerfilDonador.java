@@ -1,90 +1,107 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
 
+
+/**
+ * The persistent class for the perfil_donador database table.
+ * 
+ */
 @Entity
-@Table(name = "perfil_donador")
-public class PerfilDonador {
+@Table(name="perfil_donador")
+@NamedQuery(name="PerfilDonador.findAll", query="SELECT p FROM PerfilDonador p")
+public class PerfilDonador implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "id_user")
-    private Long idUser;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_user")
+	private Long idUser;
 
-    @Column(name = "name", length = 100)
-    private String name;
+	private String address;
 
-    @Column(name = "last_name", length = 100)
-    private String lastName;
+	private String email;
 
-    @Column(name = "email", length = 150, unique = true)
-    private String email;
+	@Column(name="last_name")
+	private String lastName;
 
-    @Column(name = "phone", length = 20)
-    private String phone;
+	private String name;
 
-    @Column(name = "address")
-    private String address;
+	private String phone;
 
-    @Column(name = "puntos")
-    private Integer puntos;
+	private Integer puntos;
 
-   
-    public PerfilDonador() {}
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+@JoinColumn(name="id_user")
+	private Usuario usuario;
 
-   
-    public Long getIdUser() {
-        return idUser;
-    }
+	public PerfilDonador() {
+	}
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
+	public Long getIdUser() {
+		return this.idUser;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getAddress() {
+		return this.address;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getEmail() {
+		return this.email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getLastName() {
+		return this.lastName;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getPhone() {
+		return this.phone;
+	}
 
-    public Integer getPuntos() {
-        return puntos;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public void setPuntos(Integer puntos) {
-        this.puntos = puntos;
-    }
+	public Integer getPuntos() {
+		return this.puntos;
+	}
+
+	public void setPuntos(Integer puntos) {
+		this.puntos = puntos;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }

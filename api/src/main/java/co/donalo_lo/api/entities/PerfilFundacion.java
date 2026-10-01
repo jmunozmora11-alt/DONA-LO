@@ -1,113 +1,115 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
 
+
+/**
+ * The persistent class for the perfil_fundacion database table.
+ * 
+ */
 @Entity
-@Table(name = "perfil_fundacion")
-public class PerfilFundacion {
+@Table(name="perfil_fundacion")
+@NamedQuery(name="PerfilFundacion.findAll", query="SELECT p FROM PerfilFundacion p")
+public class PerfilFundacion implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_fundacion")
-    private Long idFundacion;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_fundacion")
+	private Long idFundacion;
 
-    @Column(name = "id_user") 
-    private Long idUser;
+	private String address;
 
-    @Column(name = "name", length = 100, nullable = false)
-    private String name;
+	private String descripcion;
 
-    @Column(name = "descripcion", columnDefinition = "TEXT")
-    private String descripcion;
+	private String email;
 
-    @Column(name = "email", length = 100)
-    private String email;
+	private String horarios;
 
-    @Column(name = "phone", length = 20)
-    private String phone;
+	@Column(name="id_user")
+	private Long idUser;
 
-    @Column(name = "address", length = 150)
-    private String address;
+	private String name;
 
-    @Column(name = "tipo_servicio", length = 100)
-    private String tipoServicio;
+	private String phone;
 
-    @Column(name = "horarios", length = 100)
-    private String horarios;
+	@Column(name="tipo_servicio")
+	private String tipoServicio;
 
-    
-    public PerfilFundacion() {}
+	public PerfilFundacion() {
+	}
 
-   
-    public Long getIdFundacion() {
-        return idFundacion;
-    }
+	public Long getIdFundacion() {
+		return this.idFundacion;
+	}
 
-    public void setIdFundacion(Long idFundacion) {
-        this.idFundacion = idFundacion;
-    }
+	public void setIdFundacion(Long idFundacion) {
+		this.idFundacion = idFundacion;
+	}
 
-    public Long getIdUser() {
-        return idUser;
-    }
+	public String getAddress() {
+		return this.address;
+	}
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getDescripcion() {
+		return this.descripcion;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getEmail() {
+		return this.email;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getHorarios() {
+		return this.horarios;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setHorarios(String horarios) {
+		this.horarios = horarios;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public Long getIdUser() {
+		return this.idUser;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getTipoServicio() {
-        return tipoServicio;
-    }
+	public String getPhone() {
+		return this.phone;
+	}
 
-    public void setTipoServicio(String tipoServicio) {
-        this.tipoServicio = tipoServicio;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getHorarios() {
-        return horarios;
-    }
+	public String getTipoServicio() {
+		return this.tipoServicio;
+	}
 
-    public void setHorarios(String horarios) {
-        this.horarios = horarios;
-    }
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
+
 }

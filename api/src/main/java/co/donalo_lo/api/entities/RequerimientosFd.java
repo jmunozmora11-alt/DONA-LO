@@ -1,80 +1,139 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
+
+/**
+ * The persistent class for the requerimientos_fd database table.
+ * 
+ */
 @Entity
-@Table(name = "requerimientos_fd")
-public class RequerimientosFd {
+@Table(name="requerimientos_fd")
+@NamedQuery(name="RequerimientosFd.findAll", query="SELECT r FROM RequerimientosFd r")
+public class RequerimientosFd implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_requerimiento")
-    private Long idRequerimiento;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_requerimiento")
+	private Long idRequerimiento;
 
-    @Column(name = "id_fundacion")
-    private Long idFundacion;
+	@Column(name="cant_solicitada")
+	private Integer cantSolicitada;
 
-    @Column(name = "categoria", length = 30)
-    private String categoria;
+	@Column(name="cantidad_conseguida")
+	private Integer cantidadConseguida;
 
-    @Column(name = "talla", length = 20)
-    private String talla;
+	private String categoria;
 
-    @Column(name = "color", length = 50)
-    private String color;
+	private String color;
 
-    @Column(name = "tipo", length = 30)
-    private String tipo;
+	private String dimension;
 
-    @Column(name = "dimension", length = 100)
-    private String dimension;
+	private String estado;
 
-    @Column(name = "cant_solicitada")
-    private Integer cantSolicitada;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_solicitud")
+	private Date fechaSolicitud;
 
-    @Column(name = "cantidad_conseguida")
-    private Integer cantidadConseguida;
+	@Column(name="id_fundacion")
+	private Long idFundacion;
 
-    @Column(name = "estado", length = 30)
-    private String estado;
+	private String talla;
 
-    @Column(name = "fecha_solicitud")
-    private LocalDate fechaSolicitud;
+	private String tipo;
 
-    public RequerimientosFd() {}
+	public RequerimientosFd() {
+	}
 
-    // --- Getters y Setters ---
-    public Long getIdRequerimiento() { return idRequerimiento; }
-    public void setIdRequerimiento(Long idRequerimiento) { this.idRequerimiento = idRequerimiento; }
+	public Long getIdRequerimiento() {
+		return this.idRequerimiento;
+	}
 
-    public Long getIdFundacion() { return idFundacion; }
-    public void setIdFundacion(Long idFundacion) { this.idFundacion = idFundacion; }
+	public void setIdRequerimiento(Long idRequerimiento) {
+		this.idRequerimiento = idRequerimiento;
+	}
 
-    public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+	public Integer getCantSolicitada() {
+		return this.cantSolicitada;
+	}
 
-    public String getTalla() { return talla; }
-    public void setTalla(String talla) { this.talla = talla; }
+	public void setCantSolicitada(Integer cantSolicitada) {
+		this.cantSolicitada = cantSolicitada;
+	}
 
-    public String getColor() { return color; }
-    public void setColor(String color) { this.color = color; }
+	public Integer getCantidadConseguida() {
+		return this.cantidadConseguida;
+	}
 
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
+	public void setCantidadConseguida(Integer cantidadConseguida) {
+		this.cantidadConseguida = cantidadConseguida;
+	}
 
-    public String getDimension() { return dimension; }
-    public void setDimension(String dimension) { this.dimension = dimension; }
+	public String getCategoria() {
+		return this.categoria;
+	}
 
-    public Integer getCantSolicitada() { return cantSolicitada; }
-    public void setCantSolicitada(Integer cantSolicitada) { this.cantSolicitada = cantSolicitada; }
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 
-    public Integer getCantidadConseguida() { return cantidadConseguida; }
-    public void setCantidadConseguida(Integer cantidadConseguida) { this.cantidadConseguida = cantidadConseguida; }
+	public String getColor() {
+		return this.color;
+	}
 
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
+	public void setColor(String color) {
+		this.color = color;
+	}
 
-    public LocalDate getFechaSolicitud() { return fechaSolicitud; }
-    public void setFechaSolicitud(LocalDate fechaSolicitud) { this.fechaSolicitud = fechaSolicitud; }
+	public String getDimension() {
+		return this.dimension;
+	}
+
+	public void setDimension(String dimension) {
+		this.dimension = dimension;
+	}
+
+	public String getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getFechaSolicitud() {
+		return this.fechaSolicitud;
+	}
+
+	public void setFechaSolicitud(Date fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
+	}
+
+	public Long getIdFundacion() {
+		return this.idFundacion;
+	}
+
+	public void setIdFundacion(Long idFundacion) {
+		this.idFundacion = idFundacion;
+	}
+
+	public String getTalla() {
+		return this.talla;
+	}
+
+	public void setTalla(String talla) {
+		this.talla = talla;
+	}
+
+	public String getTipo() {
+		return this.tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 }

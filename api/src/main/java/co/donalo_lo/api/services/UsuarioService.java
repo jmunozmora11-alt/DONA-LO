@@ -1,34 +1,63 @@
 package co.donalo_lo.api.services;
 
 import co.donalo_lo.api.entities.Usuario;
-import co.donalo_lo.api.repositories.UsuarioRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements  UsuarioServiceI{
 
-    private final UsuarioRepository usuarioRepository;
+   @Autowired
+   
 
-    UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
+	@Override
+	public Usuario InsertUsuario(Usuario Usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
-    }
+	@Override
+	public Usuario UpdateUsuario(Usuario Usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    public Optional<Usuario> obtenerUsuarioPorId(Long id) {
-        return usuarioRepository.findById(id);
-    }
+	@Override
+	public int deleteUsuario(Usuario Usuario) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    public Usuario guardarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
+	@Override
+	public Usuario findIdUsuario(Usuario id_usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    public void eliminarUsuario(Long id) {
-        usuarioRepository.deleteById(id);
-    }
+	@Override
+	public List<Usuario> listUsuario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario findEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario FindId_usuario(String Usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario findIdUsuario(Integer id_usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

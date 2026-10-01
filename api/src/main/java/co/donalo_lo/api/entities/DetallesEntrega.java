@@ -1,44 +1,78 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
+
+/**
+ * The persistent class for the detalles_entrega database table.
+ * 
+ */
 @Entity
-@Table(name = "detalles_entrega")
-public class DetallesEntrega {
+@Table(name="detalles_entrega")
+@NamedQuery(name="DetallesEntrega.findAll", query="SELECT d FROM DetallesEntrega d")
+public class DetallesEntrega implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_entrega")
-    private Long idEntrega;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_entrega")
+	private Long idEntrega;
 
-    @Column(name = "id_donacion")
-    private Long idDonacion;
+	@Column(name="estado_entrega")
+	private String estadoEntrega;
 
-    @Column(name = "metodo_entrega", length = 50)
-    private String metodoEntrega;
+	@Column(name="fecha_actualizacion")
+	private Timestamp fechaActualizacion;
 
-    @Column(name = "estado_entrega", length = 50)
-    private String estadoEntrega;
+	@Column(name="id_donacion")
+	private Long idDonacion;
 
-    @Column(name = "fecha_actualizacion")
-    private LocalDateTime fechaActualizacion;
+	@Column(name="metodo_entrega")
+	private String metodoEntrega;
 
-    public DetallesEntrega() {}
+	public DetallesEntrega() {
+	}
 
-   
-    public Long getIdEntrega() { return idEntrega; }
-    public void setIdEntrega(Long idEntrega) { this.idEntrega = idEntrega; }
+	public Long getIdEntrega() {
+		return this.idEntrega;
+	}
 
-    public Long getIdDonacion() { return idDonacion; }
-    public void setIdDonacion(Long idDonacion) { this.idDonacion = idDonacion; }
+	public void setIdEntrega(Long idEntrega) {
+		this.idEntrega = idEntrega;
+	}
 
-    public String getMetodoEntrega() { return metodoEntrega; }
-    public void setMetodoEntrega(String metodoEntrega) { this.metodoEntrega = metodoEntrega; }
+	public String getEstadoEntrega() {
+		return this.estadoEntrega;
+	}
 
-    public String getEstadoEntrega() { return estadoEntrega; }
-    public void setEstadoEntrega(String estadoEntrega) { this.estadoEntrega = estadoEntrega; }
+	public void setEstadoEntrega(String estadoEntrega) {
+		this.estadoEntrega = estadoEntrega;
+	}
 
-    public LocalDateTime getFechaActualizacion() { return fechaActualizacion; }
-    public void setFechaActualizacion(LocalDateTime fechaActualizacion) { this.fechaActualizacion = fechaActualizacion; }
+	public Timestamp getFechaActualizacion() {
+		return this.fechaActualizacion;
+	}
+
+	public void setFechaActualizacion(Timestamp fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public Long getIdDonacion() {
+		return this.idDonacion;
+	}
+
+	public void setIdDonacion(Long idDonacion) {
+		this.idDonacion = idDonacion;
+	}
+
+	public String getMetodoEntrega() {
+		return this.metodoEntrega;
+	}
+
+	public void setMetodoEntrega(String metodoEntrega) {
+		this.metodoEntrega = metodoEntrega;
+	}
+
 }

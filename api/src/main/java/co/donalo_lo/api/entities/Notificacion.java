@@ -1,44 +1,75 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
+
+/**
+ * The persistent class for the notificacion database table.
+ * 
+ */
 @Entity
-@Table(name = "notificacion")
-public class Notificacion {
+@NamedQuery(name="Notificacion.findAll", query="SELECT n FROM Notificacion n")
+public class Notificacion implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_notificacion")
-    private Long idNotificacion;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_notificacion")
+	private Long idNotificacion;
 
-    @Column(name = "id_user")
-    private Long idUser;
+	@Column(name="fecha_creacion")
+	private Timestamp fechaCreacion;
 
-    @Column(name = "mensaje", columnDefinition = "TEXT")
-    private String mensaje;
+	@Column(name="id_user")
+	private Long idUser;
 
-    @Column(name = "leido")
-    private Boolean leido;
+	private Boolean leido;
 
-    @Column(name = "fecha_creacion")
-    private LocalDateTime fechaCreacion;
+	private String mensaje;
 
-    public Notificacion() {}
+	public Notificacion() {
+	}
 
-  
-    public Long getIdNotificacion() { return idNotificacion; }
-    public void setIdNotificacion(Long idNotificacion) { this.idNotificacion = idNotificacion; }
+	public Long getIdNotificacion() {
+		return this.idNotificacion;
+	}
 
-    public Long getIdUser() { return idUser; }
-    public void setIdUser(Long idUser) { this.idUser = idUser; }
+	public void setIdNotificacion(Long idNotificacion) {
+		this.idNotificacion = idNotificacion;
+	}
 
-    public String getMensaje() { return mensaje; }
-    public void setMensaje(String mensaje) { this.mensaje = mensaje; }
+	public Timestamp getFechaCreacion() {
+		return this.fechaCreacion;
+	}
 
-    public Boolean getLeido() { return leido; }
-    public void setLeido(Boolean leido) { this.leido = leido; }
+	public void setFechaCreacion(Timestamp fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
 
-    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
-    public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+	public Long getIdUser() {
+		return this.idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public Boolean getLeido() {
+		return this.leido;
+	}
+
+	public void setLeido(Boolean leido) {
+		this.leido = leido;
+	}
+
+	public String getMensaje() {
+		return this.mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
 }

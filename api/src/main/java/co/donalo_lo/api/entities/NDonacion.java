@@ -1,43 +1,79 @@
 package co.donalo_lo.api.entities;
 
+import java.io.Serializable;
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
+
+/**
+ * The persistent class for the n_donacion database table.
+ * 
+ */
 @Entity
-@Table(name = "n_donacion")
-public class NDonacion {
+@Table(name="n_donacion")
+@NamedQuery(name="NDonacion.findAll", query="SELECT n FROM NDonacion n")
+public class NDonacion implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_donacion")
-    private Long idDonacion;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_donacion")
+	private Long idDonacion;
 
-    @Column(name = "id_articulo")
-    private Long idArticulo;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_donacion")
+	private Date fechaDonacion;
 
-    @Column(name = "id_user")
-    private Long idUser;
+	@Column(name="id_articulo")
+	private Long idArticulo;
 
-    @Column(name = "id_fundacion")
-    private Long idFundacion;
+	@Column(name="id_fundacion")
+	private Long idFundacion;
 
-    @Column(name = "fecha_donacion")
-    private LocalDate fechaDonacion;
+	@Column(name="id_user")
+	private Long idUser;
 
-    public NDonacion() {}
+	public NDonacion() {
+	}
 
-    public Long getIdDonacion() { return idDonacion; }
-    public void setIdDonacion(Long idDonacion) { this.idDonacion = idDonacion; }
+	public Long getIdDonacion() {
+		return this.idDonacion;
+	}
 
-    public Long getIdArticulo() { return idArticulo; }
-    public void setIdArticulo(Long idArticulo) { this.idArticulo = idArticulo; }
+	public void setIdDonacion(Long idDonacion) {
+		this.idDonacion = idDonacion;
+	}
 
-    public Long getIdUser() { return idUser; }
-    public void setIdUser(Long idUser) { this.idUser = idUser; }
+	public Date getFechaDonacion() {
+		return this.fechaDonacion;
+	}
 
-    public Long getIdFundacion() { return idFundacion; }
-    public void setIdFundacion(Long idFundacion) { this.idFundacion = idFundacion; }
+	public void setFechaDonacion(Date fechaDonacion) {
+		this.fechaDonacion = fechaDonacion;
+	}
 
-    public LocalDate getFechaDonacion() { return fechaDonacion; }
-    public void setFechaDonacion(LocalDate fechaDonacion) { this.fechaDonacion = fechaDonacion; }
+	public Long getIdArticulo() {
+		return this.idArticulo;
+	}
+
+	public void setIdArticulo(Long idArticulo) {
+		this.idArticulo = idArticulo;
+	}
+
+	public Long getIdFundacion() {
+		return this.idFundacion;
+	}
+
+	public void setIdFundacion(Long idFundacion) {
+		this.idFundacion = idFundacion;
+	}
+
+	public Long getIdUser() {
+		return this.idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
 }

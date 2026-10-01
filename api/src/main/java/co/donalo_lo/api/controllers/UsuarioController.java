@@ -1,7 +1,7 @@
 package co.donalo_lo.api.controllers;
 
 import co.donalo_lo.api.entities.Usuario;
-import co.donalo_lo.api.repositories.UsuarioRepository;
+import co.donalo_lo.api.jpa.JpaUsuario;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,9 @@ import java.util.List;
 @CrossOrigin(origins = "*") // 
 public class UsuarioController {
 
-    private final UsuarioRepository usuarioRepository;
+    private final JpaUsuario usuarioRepository;
 
-    UsuarioController(UsuarioRepository usuarioRepository) {
+    UsuarioController(JpaUsuario usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 

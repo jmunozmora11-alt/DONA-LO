@@ -1,7 +1,8 @@
 package co.donalo_lo.api.services;
 
 import co.donalo_lo.api.entities.PerfilFundacion;
-import co.donalo_lo.api.repositories.PerfilFundacionRepository;
+import co.donalo_lo.api.jpa.JpaPerfilFundacion;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.Optional;
 @Service
 public class PerfilFundacionService {
 
-    private final PerfilFundacionRepository fundacionRepository;
+    private final JpaPerfilFundacion fundacionRepository;
 
-    PerfilFundacionService(PerfilFundacionRepository fundacionRepository) {
+    PerfilFundacionService(JpaPerfilFundacion fundacionRepository) {
         this.fundacionRepository = fundacionRepository;
     }
 

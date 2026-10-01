@@ -1,7 +1,8 @@
 package co.donalo_lo.api.services;
 
 import co.donalo_lo.api.entities.PerfilDonador;
-import co.donalo_lo.api.repositories.PerfilDonadorRepository;
+import co.donalo_lo.api.jpa.JpaPerfilDonador;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.Optional;
 @Service
 public class PerfilDonadorService {
 
-    private final PerfilDonadorRepository donadorRepository;
+    private final JpaPerfilDonador donadorRepository;
 
-    public PerfilDonadorService(PerfilDonadorRepository donadorRepository) {
+    public PerfilDonadorService(JpaPerfilDonador donadorRepository) {
         this.donadorRepository = donadorRepository;
     }
 
