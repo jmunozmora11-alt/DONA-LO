@@ -1,4 +1,4 @@
-package co.donalo_lo.api.entities;
+package model;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
@@ -15,7 +15,6 @@ public class PerfilDonador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_user")
 	private Long idUser;
 
@@ -31,11 +30,6 @@ public class PerfilDonador implements Serializable {
 	private String phone;
 
 	private Integer puntos;
-
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-@JoinColumn(name="id_user")
-	private Usuario usuario;
 
 	public PerfilDonador() {
 	}
@@ -94,14 +88,6 @@ public class PerfilDonador implements Serializable {
 
 	public void setPuntos(Integer puntos) {
 		this.puntos = puntos;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 }

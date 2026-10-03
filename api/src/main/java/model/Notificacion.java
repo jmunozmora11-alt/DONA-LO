@@ -1,4 +1,4 @@
-package co.donalo_lo.api.entities;
+package model;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
@@ -15,7 +15,6 @@ public class Notificacion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_notificacion")
 	private Long idNotificacion;
 
